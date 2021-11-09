@@ -1,17 +1,17 @@
-import { useDrag } from 'react-dnd'
 
-function DraggableComponent(props) {
-  const [collected, drag, dragPreview] = useDrag(() => ({
-    // type,
-    // item: { id }
-  }))
-  return collected.isDragging ? (
-    <div ref={dragPreview} />
-  ) : (
-    <div ref={drag} {...collected}>
-      ...
-    </div>
-  )
-}
+	// import { render } from 'react-dom'
+	import Example from './example'
+	import { DndProvider } from 'react-dnd'
+	import { HTML5Backend } from 'react-dnd-html5-backend'
 
-export default DraggableComponent ; 
+	function App() {
+		return (
+			<div className="App">
+				<DndProvider backend={HTML5Backend}>
+					<Example />
+				</DndProvider>
+			</div>
+		)
+	}
+
+	export default App

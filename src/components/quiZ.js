@@ -17,7 +17,7 @@ import firebase ,{auth}from '../services/firebase';
             <h1> QuiZ</h1>
 
            <h1 style={{color:"red"}}> {user[0]?.displayName}</h1>
-            {/* <DragDrop /> */}
+            <DragDrop />
 
           <br />
             <div style={{marginTop:"50px"}}>
