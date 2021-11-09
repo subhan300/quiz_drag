@@ -7,7 +7,7 @@ function Home({user}) {
     const navigate = useNavigate();
 
     
-
+console.log(user[0],"user []0>>>",user[0]?.email,"display")
     // useEffect(() => {
     //   firebase.auth().onAuthStateChanged(user => {
     //     setUser(user);
@@ -23,6 +23,7 @@ function Home({user}) {
     return (
         <div>
             <h1>Welcome to Home </h1>
+            {user[0]?.displayName}
               <Login user={user} /> 
        </div>
     )
