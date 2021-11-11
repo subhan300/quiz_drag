@@ -15,6 +15,8 @@ import { BrowserRouter, Routes , Route } from 'react-router-dom'
 import './App.css';
 import Home from "./components/Home";
 import QuiZ from "./components/quiZ";
+import Category from './components/Category';
+import GlobalContextProvider from './components/GlobalContext/globalContext';
 
 
 
@@ -32,21 +34,24 @@ function App() {
 
  console.log(user[0]==null,"apps")
   return (
-    
+    <GlobalContextProvider >
     <BrowserRouter>
     <div className="App">
       
         <Routes>
          {
-           (user[0]==null)?<Route path='/' element={<Home user={user} />}></Route> :<Route path='/' element={<QuiZ user={user} />}></Route>
+           (user[0]==null)?<Route path='/' element={<Home user={user} />}></Route> :<Route path="/" element={<Category />}></Route>
          }
          
-      
-          {/* <Route path='products' element={<Products />}></Route> */}
+         {
+           (user[0]==null)?<Route path='/quiZ' element={<Home user={user} />}></Route> :<Route path="/quiZ"   element={<QuiZ user={user} />}></Route>
+         }
+         
+       
         </Routes>    
     </div>
     </BrowserRouter>
-    
+    </GlobalContextProvider >
 
   );
 }

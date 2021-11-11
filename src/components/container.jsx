@@ -14,6 +14,8 @@ export const Container = memo(function Container() {
         },
         
     ]);
+
+    const counter=useState(0)
     const boxes = useState([
         { name: 'Bottle', type: ItemTypes.GLASS },
         { name: 'Banana', type: ItemTypes.FOOD },
@@ -38,13 +40,13 @@ export const Container = memo(function Container() {
 			<div style={{ overflow: 'hidden', clear: 'both' }}>
                 {dustbins[0].map(({ accepts, lastDroppedItem,value }, index) =>
 
-                      (<Dustbin setDust={dustbins} accept={accepts} val={value}  lastDroppedItem={lastDroppedItem} onDrop={(item) => handleDrop(index, item)} key={index}/>))
+                      (<Dustbin counter={counter} setDust={dustbins} accept={accepts} val={value}  lastDroppedItem={lastDroppedItem} onDrop={(item) => handleDrop(index, item)} key={index}/>))
                 }
               
 			</div>
 
 			<div style={{ overflow: 'hidden', clear: 'both' }}>
-				{boxes[0].map(({ name, type }, index) => (<Box box={boxes} name={name} type={type} isDropped={isDropped(name)} key={index}/>))}
+				{boxes[0].map(({ name, type }, index) => (<Box counter={counter} box={boxes} name={name} type={type} isDropped={isDropped(name)} key={index}/>))}
 			</div>
 		</div>);
 });

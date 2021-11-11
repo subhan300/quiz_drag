@@ -6,7 +6,7 @@ import firebase ,{auth}from '../services/firebase';
     // const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
-    console.log(user[0]?.displayName,"display")
+    // console.log(user,"display")
       const signout=()=>{
           auth.signOut();
           navigate("/")
