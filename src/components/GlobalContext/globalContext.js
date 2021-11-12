@@ -7,7 +7,7 @@ const initialState=
    {
        counter:0,
     //    list: [ { accepts: [ItemTypes.PAPER], lastDroppedItem: null,value:"Bottle" }],
-       result:[{Ans1:"bottle",Ans2:"paper",Ans3:"MagaZine"}],
+       result:[],
        
 
    }

@@ -21,6 +21,29 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithEmailAndPassword = async (email, password) => {
+  try {
+    await auth.signInWithEmailAndPassword(email, password);
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+export const registerWithEmailAndPassword = async (name, email, password) => {
+  try {
+    const res = await auth.createUserWithEmailAndPassword(email, password);
+    const user = res.user;
+    // await db.collection("users").add({
+    //   uid: user.uid,
+    //   name,
+    //   authProvider: "local",
+    //   email,
+    // });
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
 
 export default firebase
 // const provider = new firebase.auth.GoogleAuthProvider();

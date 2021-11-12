@@ -1,4 +1,4 @@
-import  React,{ memo ,useState,useEffect,useContext} from 'react';
+import  React,{ memo ,useState,useEffect,useContext,useRef} from 'react';
 import { useDrop } from 'react-dnd';
 import { ItemTypes } from './ItemTypes';
 import {GlobalContext} from "./GlobalContext/globalContext"
@@ -43,14 +43,22 @@ export const Dustbin = memo(function Dustbin({ accept, lastDroppedItem, onDrop,v
     //     setCounter(p=>p+1)
     //     console.log(counter,"counter")
     // }
+    const ref_target= useRef(null)
+    // console.log("target ", ref_target.current.style)
 useEffect(() => {
-    
+
    const T=()=>{
     if(lastDroppedItem){
         console.log("item",lastDroppedItem.name)
         if(lastDroppedItem.name==val){
            backgroundColor="green";
            addTransaction({win:lastDroppedItem.name})
+          function k(){
+              console.log(ref_target.current.style)
+            ref_target.current.style.border="5px solid blue  !important"
+          }
+          k()
+        //    ref_target.current.style.height="800px !important"
         //    setCounter(p=>p+1)
         //        console.log(counter,"counter")
                  
@@ -81,12 +89,18 @@ useEffect(() => {
  
 
    
-    return (<div ref={drop} role="Dustbin" style={{ ...style, backgroundColor }}>
+    return (
+    
+        <div style={{border:"3px solid yellow"}} ref={ref_target}>
+               <div ref={drop} role="Dustbin" style={{ ...style, backgroundColor }}>
 			{isActive
             ? 'Release to drop'
             : `This dustbin accepts: ${accept.join(', ')}`}
 
 			{lastDroppedItem && (<p>Last dropped: {JSON.stringify(lastDroppedItem)}</p>)}
           
-		</div>);
+        </div>
+        </div>
+        
+        );
 });

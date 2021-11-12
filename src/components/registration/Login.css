@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    /* padding: 5px; */
+    box-sizing: border-box;
+    padding: 0;
+}
+.login_container{
+    width: 80%;
+    margin: 0 auto;
+    /* border:2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Login {
+   
+    margin-top: 60px;
+    /* border:2px solid blue; */
+    padding: 10px 70px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 15px 80px rgba(0,0 ,0, 0.1);
+    max-width: 500px;
+    align-items: center;
+    justify-content: center;
+}
+.titleText{
+    color: black;
+    font-size: 3em;
+    font-weight: 300;
+    /* border:2px solid red; */
+    margin-bottom: 10px;
+    color: red;
+ 
+}
+.titleText span{
+    
+    color: #000000 !important;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+.title{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.Login h4{
+    color: black;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    font-weight: 450;
+}
+.Login .inputBox{
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.inputBox>input{
+    padding:8px;
+}
+.Login .inputBox button{
+    width: 100%;
+    border: 1px solid #555;
+    color: #111;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    resize: none;
+}
+
+.Login .inputBox button[type="submit"]{
+    font-size: 1em;
+    color: white;
+    background: #ff0101;
+    display: inline;
+    padding: 10px;
+    margin-left: 0px;
+    margin-top: 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.Login .inputBox button[type="submit"]:hover{
+    letter-spacing: 5px;
+}
+
+
+.button_google{
+    padding:10px;
+    font-size:21px;
+    font-weight:bold;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
