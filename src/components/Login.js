@@ -1,6 +1,6 @@
 import { signInWithGoogle } from '../services/firebase';
 
-
+import SignIn from "../components/registration/Login"
 const Login = () => {
 
   const signIn = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <div>
 
-      <button className="button" onClick={() => signIn()}><i className="fab fa-google"></i>Sign in with google</button>
+   <SignIn />
     </div>
   )
 }

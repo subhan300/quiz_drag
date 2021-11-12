@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import firebase ,{auth}from '../services/firebase';
 import allData from './allData';
 
 
@@ -11,14 +11,30 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(1),
     },
   },
-  green: {
-    backgroundColor: 'green',
+  quiz_title:{
+    paddingTop:"10px",
+  //  fontSize:"68px",
+   color:"orange"
+  },
+  orange: {
+    backgroundColor: 'orange',
     color: '#fff',
     marginTop: theme.spacing(1),
+    padding:"15px 80px",
     '&:hover': {
-      backgroundColor: 'green',
-    },
+      backgroundColor: 'skyblue',
+    },},
+
+    blueviolet: {
+      padding:"15px 80px",
+      backgroundColor: 'blueviolet',
+      color: '#fff',
+      marginTop: theme.spacing(1),
+      '&:hover': {
+        backgroundColor: 'skyblue',
+      }
   },
+   
   countTime: {
     fontSize: '22px'
   },
@@ -32,12 +48,14 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between'
   },
   option: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'lightgreen',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: '16px',
-    height: '50px',
+    // height:"100px",
+    height: '100px',
+  
     '&:hover': {
       cursor: 'pointer'
     },
@@ -56,7 +74,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Quiz = ({ user }) => {
 
-
+  const signout=()=>{
+    auth.signOut();
+  
+  //   setUser(null)
+}
   const classes = useStyles();
   const [step, setStep] = useState(0);
   const [seconds, setSeconds] = useState(45);
@@ -70,13 +92,15 @@ const Quiz = ({ user }) => {
     setQuizData(allData)
   }, [])
 
-  useEffect(() => {
+  useEffect(() =>{
     if (seconds > 0) {
+      console.log("call")
       setTimeout(() => setSeconds(seconds - 1), 1000);
     } else {
 
     }
-  });
+  
+  })
 
 
   const handleNextStep = () => {
@@ -148,7 +172,12 @@ const Quiz = ({ user }) => {
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <h1> Quiz</h1>
+     
+        <div class="animate four   quiz_title">
+      <span>Q</span><span>U</span><span>I</span><span>Z</span>
+     
+    
+    </div>
         <Grid container className={classes.gridheader}>
           <Grid item md={2}>
             <div className={classes.countTime}>Remaning Time: <span style={{ color: seconds > 10 ? 'green' : 'red' }}> {seconds} </span> </div>
@@ -194,8 +223,14 @@ const Quiz = ({ user }) => {
           }
         </Grid>
 
-        <Button variant="contained" fullWidth onClick={checkAnswer}>Check Answer</Button>
-        <Button variant="contained" className={classes.green} fullWidth>Submit Answer</Button>
+        <Button variant="contained" className={classes.blueviolet}  onClick={checkAnswer}>Check Answer</Button>
+        <br />      <br />
+        <Button variant="contained" className={classes.orange} >Submit Answer</Button>
+
+        <div style={{marginTop:"50px"}}>
+               <button className="button signout" onClick={() =>signout()}>Sign out</button>
+            </div>
+            
 
       </div>
     </React.Fragment>

@@ -1,26 +1,27 @@
 import React,{useState} from 'react'
-import {useHistory} from "react-router-dom"
+// import { Redirect } from 'react-router-dom'
 import "./Signup.css"
-import Navbar from "../home/Navbar"
+
 import {Formik, Form} from "formik"
+import { registerWithEmailAndPassword } from '../../services/firebase'
 
 
 
 
 function Signup() {
     
-    const history = useHistory();
+ 
   
     return (
     <>
-    <Navbar />
+ 
   <div className="signup_container">
         <div class="SignUp">
           
            <div class="title">
            <h2  class="titleText"><span>S</span>ign Up</h2>
            </div>
-            
+            <br />
            <Formik
        initialValues={{ email: '', password: '' ,username:''}}
        validate={values => {
@@ -42,42 +43,12 @@ function Signup() {
        }}
        
        onSubmit={(values, { setSubmitting }) => {
-         setTimeout(async() => {
-        console.log("signup successfully")
-           await   fetch(`https://covid-tracker-app-19.herokuapp.com/covid/create/`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization":"token 694371ebc53cd0190bce48d0817c4f14d7f77503"
-            }
+         
+            alert(values)     
+            registerWithEmailAndPassword(values.username,values.email,values.password);
+        
+            setSubmitting(false);
            
-            ,
-            body:JSON.stringify(values),
-          })
-     
-            .then(async(res)=>{
-              let response=await res.json()
-              // console.log(response.id,"id")
-              // alert(response.id)
-              // localStorage.setItem("id",response.id)
-
-                        //  setUserCredentials(details)
-                     
-                        
-                      
-                        
-                         history.push("/login")
-                        
-                        }
-                         
-                         )
-            
-             .catch((error) => {
-                         
-                        console.log(error.message)
-          });
-           setSubmitting(false);
-         }, 400);
        }}
      >
        {({
@@ -103,6 +74,7 @@ function Signup() {
            ></input>
             {errors.username && touched.username && errors.username}
            </div>
+           <br />
            <div class="inputBox">
            <h4>Email</h4>
            <input required type="email" name="email"
@@ -112,6 +84,7 @@ function Signup() {
            ></input>
              {errors.email && touched.email && errors.email}
            </div>
+           <br />
            <div class="inputBox">
            <h4>Password</h4>
            <input 
@@ -120,9 +93,10 @@ function Signup() {
              onChange={handleChange}
              onBlur={handleBlur}
              value={values.password}
-         type="password" placeholder="Password" ></input>
+         type="password" ></input>
          {errors.password && touched.password && errors.password}
            </div>
+       
            <div class="inputBox">
            <button type="submit"  disabled={isSubmitting}>
             Submit

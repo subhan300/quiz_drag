@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import "./Login.css"
 import {Formik, Form} from "formik"
-
+import {Link} from "react-router-dom"
 import { signInWithGoogle, signInWithEmailAndPassword } from '../../services/firebase';
 
 import {FcGoogle} from "react-icons/fc";
@@ -28,6 +28,7 @@ function Login({user}) {
           <div class="title">
           <h2  class="titleText"><span>L</span>ogin</h2>
           </div>
+          <br />
           <Formik
      initialValues={{ email: '', password: '' }}
      validate={values => {
@@ -95,18 +96,23 @@ function Login({user}) {
          <button type="submit"    disabled={isSubmitting}>
             Login
          </button>
-     
+        
      
          </div>
              
          <div className="inputBox">
-         <button className="button_google" onClick={()=>signIn()}><div><FcGoogle style={{width:"50px",height:"36px"}} /></div><div>Sign in with Google</div></button>
+         <button className="button_google" onClick={()=>signIn()}><FcGoogle style={{width:"40px",height:"40px"}} />&nbsp;<div>Sign in with Google</div></button>
          </div>
 
+         
 </form>)}
+
+
 </Formik>
      
-          
+         <div className="inputBox">
+        <Link to="/signup"  style={{textDecoration:"none",}}> <button  className="button_email">Sign Up</button></Link>
+         </div>
        </div>
       </div>
 
