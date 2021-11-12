@@ -5,7 +5,7 @@ function Category() {
         <div>
             <h1>select categories from here  </h1>
 
-          <Link to="/quiZ">  <a >go to quiZ page</a></Link>
+          <Link to="/quiz">  <a >go to quiz page</a></Link>
 
         </div>
     )
